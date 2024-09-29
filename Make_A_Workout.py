@@ -11,7 +11,7 @@ from dotenv import load_dotenv
 import os
 load_dotenv()
 
-openai_api_key = os.getenv("OPENAI_API_KEY")
+openai_api_key = os.environ.get("OPENAI_API_KEY")
 
 
 def get_json(experience_level, body_part, exercise_duration):
@@ -97,7 +97,16 @@ if clear_button:
 
 # Display saved workout plan
 if 'workout_data' in st.session_state and st.session_state['workout_data']:
-    st.subheader("Your Workout Plan:")
-    st.write(f"**Duration:** {st.session_state['workout_data']['duration']} minutes")
-    st.write(f"**Experience Level:** {st.session_state['workout_data']['experience_level']}")
-    st.write(f"**Body Part:** {st.session_state['workout_data']['body_part']}")
+    st.divider()
+    left_column, right_column = st.columns([2, 2])  # Adjust the ratios as needed
+    with left_column:
+        st.subheader("Your Workout Plan:")
+        st.write(f"**Duration:** {st.session_state['workout_data']['duration']} minutes")
+        st.write(f"**Experience Level:** {st.session_state['workout_data']['experience_level']}")
+        st.write(f"**Body Part:** {st.session_state['workout_data']['body_part']}")
+        go_to_plan = st.button('Go to plan')
+        if go_to_plan:
+            st.switch_page('pages/2_Exercise_Plan.py')
+    with right_column:
+        st.image('hammy_gifs/happy_hammy.gif')
+    st.divider()
