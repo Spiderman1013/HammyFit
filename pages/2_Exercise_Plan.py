@@ -9,7 +9,7 @@ load_dotenv()
 openai_api_key = os.environ.get("OPENAI_API_KEY")
 
 client = openai.OpenAI(
-    api_key=openai_api_key
+    api_key=openai_api_key,
         # Defaults to os.environ.get("OPENAI_API_KEY")
 )
 

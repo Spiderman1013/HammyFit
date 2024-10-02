@@ -23,3 +23,6 @@ MANIFEST
 *.swp
 *.swo
 *.subl
+
+# Environment variables
+.env

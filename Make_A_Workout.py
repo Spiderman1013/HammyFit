@@ -9,6 +9,7 @@ from baml_src.baml_client.types import Exercises
 from setPage import set_up_page
 from dotenv import load_dotenv
 import os
+set_up_page()
 load_dotenv()
 
 openai_api_key = os.environ.get("OPENAI_API_KEY")
@@ -36,8 +37,6 @@ def get_exercises_from_api(experience_level, body_part, exercise_duration):
     except Exception as e:
         st.error(f"Error retrieving exercises: {e}")
         return []
-
-set_up_page()
 
 # Initialize session state for workout data
 if 'workout_data' not in st.session_state:
