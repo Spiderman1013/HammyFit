@@ -2,6 +2,7 @@
 
 Welcome to HammyFit, the fitness app where you and your virtual hamster buddy embark on a journey to get in shape! Think of Hammy as your personal trainer, motivating you to stay active and hit your fitness goals.
 
+
 **Features**
 
 Personalized Workout Plans: HammyFit tailors workout plans to your fitness level, goals, and preferences.
@@ -36,6 +37,7 @@ streamlit run Make_A_Workout.py
 ```
 The app will open in your browser, and you'll be ready to start building your workout plans with HammyFit!
 
+
 **Contributing** 
 
 We welcome contributions to make HammyFit better! Please follow these steps:
@@ -52,7 +54,9 @@ Push to your fork and submit a pull request:
 ```
 git push origin feature-branch-name
 ```
+
 **License**
+
 This project is licensed under the MIT License. See the LICENSE file for more details.
 
 Get fit, have fun, and grow with your hamster companion! 🐹💪
