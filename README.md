@@ -33,9 +33,9 @@ Install the necessary dependencies by running:
 pip install -r requirements.txt
 ```
 3. Run HammyFit
-Once the environment is set up, run the app using Streamlit:
+Once the environment is set up, run the app using our driver:
 ```
-streamlit run Make_A_Workout.py
+python run.py
 ```
 The app will open in your browser, and you'll be ready to start building your workout plans with HammyFit!
 
