@@ -15,6 +15,7 @@ load_dotenv()
 openai_api_key = os.environ.get("OPENAI_API_KEY")
 
 
+
 def get_json(experience_level, body_part, exercise_duration):
     data = b.ExtractExercises(experience_level, body_part, exercise_duration)
     return data
