@@ -20,7 +20,7 @@ To get started with HammyFit, follow these steps:
 Fork this repository to your GitHub account by clicking the Fork button in the top-right corner.
 Clone your forked repository locally:
 ```
-git clone https://github.com/your-username/HammyFit.git
+https://github.com/Spiderman1013/HammyFit.git
 ```
 Navigate to the project directory:
 ```
