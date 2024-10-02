@@ -55,7 +55,7 @@ if st.button("Clear History"):
 
 # Display messages in chat
 for msg in st.session_state.messages:
-    st.chat_message(msg["role"], avatar=f'{hammy_gifs_path}/working_hammy.gif' if msg['role'] is 'assistant' else 'assets/hammy_gifs/user-24.png').write(msg["content"])
+    st.chat_message(msg["role"], avatar=f'{hammy_gifs_path}/working_hammy.gif' if msg['role'] is 'assistant' else f'{hammy_gifs_path}/user-24.png').write(msg["content"])
 
 # Initialize LangChain components
 memory = ConversationBufferMemory(memory_key="chat_history")
@@ -63,15 +63,15 @@ llm = OpenAI(name='gpt-3.5-turbo', api_key=openai_api_key)
 
 # Initialize the tools for the agent
 tools = [
-    Tool(name="Textbook Knowledge", func=retrieve_context, description="Retrieve textbook knowledge about fitness."),
+    Tool(name="Textbook Knowledge", func=retrieve_context, description="Use this tool for complex or technical fitness questions that require in-depth, textbook knowledge."),
 ]
 
-agent = initialize_agent(tools, llm, memory=memory, agent_type="REACT_DOCSTORE", verbose=True, handle_parsing_error=True)
+agent = initialize_agent(tools, llm, memory=memory, agent_type="REACT_DOCSTORE", verbose=True, handle_parsing_errors=True)
 
 if prompt := st.chat_input():
     # Update session state with user prompt
     st.session_state.messages.append({"role": "user", "avatar": f'{hammy_gifs_path}/user-24.png', "content": prompt})
-    st.chat_message("user").write(prompt)
+    st.chat_message("user", avatar=f'{hammy_gifs_path}/user-24.png').write(prompt)
 
     # Increment the prompt counter
     st.session_state.prompt_counter += 1
@@ -82,11 +82,9 @@ if prompt := st.chat_input():
 
     # Create the prompt for the LangChain agent
     langchain_prompt = f'''
-    You are a knowledgeable and friendly personal fitness trainer. Your task is to answer the users about fitness topics. 
-    Use your tools effectively and methodically to assist the client. If none of the tools work, use your prior knowledge. 
-    You may only make one observation. After that, you must formulate an answer.
-    Please give an in-depth answer of at least 2 paragraphs. 
-
+    You are a knowledgeable and friendly personal fitness trainer named Hammy. Your task is to answer users about fitness topics. 
+    Only use the "Textbook Knowledge" tool if the user's question seems highly technical or involves complex information. 
+    If the question does not require the use of any tools, simply provide an answer using your prior knowledge.
     The user's question is: "{prompt}"
     '''
 

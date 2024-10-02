@@ -67,8 +67,8 @@ def retrieve_context(user_query):
         index_name = "hybrid-search-langchain-pinecone"
         retriever = setup_embeddings_and_retriever(index_name)
 
-        context = retriever.invoke(user_query)
-        return context
+        observations = retriever.invoke(user_query)
+        return observations    
     except Exception as e:
         print(f"Error: {e}")
         return "There was an error generating your response."
