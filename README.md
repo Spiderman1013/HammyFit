@@ -16,7 +16,7 @@ Welcome to HammyFit, the fitness app where you and your virtual hamster buddy em
 
 To get started with HammyFit, follow these steps:
 
-1. Clone the Project
+1. Clone the Project:
 Clone this repository to your PC by running the following command:
 ```
 https://github.com/Spiderman1013/HammyFit.git
@@ -25,13 +25,13 @@ Navigate to the project directory:
 ```
 cd HammyFit
 ```
-2. Set Up Your Environment
+2. Set Up Your Environment:
 Make sure you have Python installed (preferably version 3.8 or higher).
 Install the necessary dependencies by running:
 ```
 pip install -r requirements.txt
 ```
-3. Run HammyFit
+3. Run HammyFit:
 Once the environment is set up, run the app using our driver:
 ```
 python run.py
