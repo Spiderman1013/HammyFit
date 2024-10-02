@@ -1,5 +1,5 @@
 ## HammyFit Documentation
-![alt text](https://github.com/Spiderman1013/Hammy/blob/main/assets/hammy_gifs/hammy-logo.gif)
+![alt text](https://github.com/Spiderman1013/Hammy/blob/main/hammy_gifs/hammy-logo.gif)
 
 Welcome to HammyFit, the fitness app where you and your virtual hamster buddy embark on a journey to get in shape! Think of Hammy as your personal trainer, motivating you to stay active and hit your fitness goals.
 

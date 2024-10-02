@@ -3,7 +3,7 @@ import cv2
 import mediapipe as mp
 import numpy as np
 import math
-from setPage import set_up_page
+from helpers.setPage import set_up_page
 set_up_page()
 
 

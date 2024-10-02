@@ -1,12 +1,24 @@
 import streamlit as st
 import cv2
-from utils import get_mediapipe_pose
-from process_frame import ProcessFrame
-from thresholds import get_thresholds_beginner, get_thresholds_pro
 import threading
 from playsound import playsound
 import os
 import time
+import sys
+from helpers.setPage import set_up_page
+set_up_page()
+
+cur_dir = os.getcwd()
+
+help_dir  = os.path.abspath(os.path.join(cur_dir, 'helpers'))
+
+# Add the grandparent directory to the system path
+sys.path.append(help_dir)
+
+from helpers.squats.utils import get_mediapipe_pose
+from  helpers.squats.process_frame import ProcessFrame
+from  helpers.squats.thresholds import get_thresholds_beginner, get_thresholds_pro
+
 
 st.title('AI Fitness Trainer: Squats Analysis')
 
@@ -34,6 +46,7 @@ ready = True
 def play_sound(sound_to_play):
     for sound in sound_to_play:
         sound_file = os.path.join('sounds', f'{sound}.mp3')
+        sound_file = os.path.abspath('assets', sound_file)
         playsound(sound_file)
     time.sleep(3)
     global ready

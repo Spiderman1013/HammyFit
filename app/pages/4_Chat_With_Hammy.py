@@ -2,13 +2,29 @@ import streamlit as st
 from langchain_openai import OpenAI
 from langchain.agents import initialize_agent, Tool
 from langchain.memory import ConversationBufferMemory
-from query2 import retrieve_context
-from exerciseapi import get_exercise_image, get_exercise_video
+#from helpers.exerciseapi import get_exercise_image, get_exercise_video
 from dotenv import load_dotenv
-import os
 import re
-from setPage import set_up_page
+from helpers.setPage import set_up_page
 set_up_page()
+
+
+import os
+import sys
+original_sys_path = sys.path.copy()
+# Navigate to the grandparent directory
+
+parent_dir = os.path.abspath(os.path.join(os.getcwd(), '..'))  # Get the absolute path of the parent directory
+parent_dir = os.path.abspath(os.path.join(parent_dir, '..'))  # Get the absolute path of the parent directory
+sys.path.append(parent_dir)  # Add the grandparent directory to the system path
+from helpers.RAG import retrieve_context
+
+sys.path = original_sys_path.copy()  # Reset the system path
+
+parent_dir = os.path.abspath(os.path.join(os.getcwd(), '..'))  # Get the absolute path of the parent directory
+hammy_gifs_path = os.path.join(parent_dir, 'assets', 'hammy_gifs')
+print(hammy_gifs_path)
+
 
 def remove_links(text):
     # This regex pattern matches URLs
@@ -24,7 +40,7 @@ st.title("💬 Chat with Hammy!")
 
 # Initialize chat history if it doesn't exist
 if "messages" not in st.session_state:
-    st.session_state["messages"] = [{"role": "assistant", "avatar": 'hammy_gifs/working_hammy.gif', "content": "Hey, I'm Hammy! Tell me any fitness question!"}]
+    st.session_state["messages"] = [{"role": "assistant", "avatar": f'{hammy_gifs_path}/working_hammy.gif', "content": "Hey, I'm Hammy! Tell me any fitness question!"}]
 if "prompt_counter" not in st.session_state:
     st.session_state["prompt_counter"] = 0
 
@@ -39,7 +55,7 @@ if st.button("Clear History"):
 
 # Display messages in chat
 for msg in st.session_state.messages:
-    st.chat_message(msg["role"], avatar='hammy_gifs/working_hammy.gif' if msg['role'] is 'assistant' else 'hammy_gifs/user-24.png').write(msg["content"])
+    st.chat_message(msg["role"], avatar=f'{hammy_gifs_path}/working_hammy.gif' if msg['role'] is 'assistant' else 'assets/hammy_gifs/user-24.png').write(msg["content"])
 
 # Initialize LangChain components
 memory = ConversationBufferMemory(memory_key="chat_history")
@@ -54,7 +70,7 @@ agent = initialize_agent(tools, llm, memory=memory, agent_type="REACT_DOCSTORE",
 
 if prompt := st.chat_input():
     # Update session state with user prompt
-    st.session_state.messages.append({"role": "user", "avatar": 'hammy_gifs/user-24.png', "content": prompt})
+    st.session_state.messages.append({"role": "user", "avatar": f'{hammy_gifs_path}/user-24.png', "content": prompt})
     st.chat_message("user").write(prompt)
 
     # Increment the prompt counter
@@ -76,7 +92,7 @@ if prompt := st.chat_input():
 
     # Show a spinner while waiting for the response
     with st.spinner("Hammy is thinking..."):
-        thinking = st.image('hammy_gifs/thinking_hammy.gif')
+        thinking = st.image(f'{hammy_gifs_path}/thinking_hammy.gif')
         # Get response from the LangChain agent
         response = agent.run(langchain_prompt)
 
@@ -84,4 +100,4 @@ if prompt := st.chat_input():
 
 
     st.session_state.messages.append({"role": "assistant", "content": response})    
-    st.chat_message("assistant", avatar='hammy_gifs/working_hammy.gif').write(response)
+    st.chat_message("assistant", avatar=f'{hammy_gifs_path}/working_hammy.gif').write(response)

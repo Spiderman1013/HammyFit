@@ -1,6 +1,12 @@
 import time
 import cv2
 import numpy as np
+import os
+import streamlit as st
+import sys
+helpers_dir = os.path.abspath(os.path.join(os.getcwd(), 'helpers'))
+squats_dir = os.path.abspath(os.path.join(helpers_dir, 'squats'))
+sys.path.append(squats_dir)
 from utils import find_angle, get_landmark_features, draw_text
 
 

@@ -10,9 +10,9 @@ import mediapipe as mp
 import numpy as np
 from st_on_hover_tabs import on_hover_tabs
 import openai
-from baml_src.baml_client.sync_client import b
-from baml_src.baml_client.types import Exercises
-from setPage import set_up_page
+from helpers.baml_src.baml_client.sync_client import b
+from helpers.baml_src.baml_client.types import Exercises
+from helpers.setPage import set_up_page
 import os
 set_up_page()
 
@@ -109,5 +109,8 @@ if 'workout_data' in st.session_state and st.session_state['workout_data']:
         if go_to_plan:
             st.switch_page('pages/2_Exercise_Plan.py')
     with right_column:
-        st.image('hammy_gifs/happy_hammy.gif')
+        parent_dir = os.path.abspath(os.path.join(os.getcwd(), '..'))  # Get the absolute path of the parent directory (where 'app' is located)
+        image_path = os.path.join(parent_dir, 'assets', 'hammy_gifs', 'happy_hammy.gif')  # Construct the full path to the image
+
+        st.image(image_path)
     st.divider()

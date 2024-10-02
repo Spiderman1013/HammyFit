@@ -1,8 +1,8 @@
 import streamlit as st
 import openai  # Ensure you have the OpenAI library installed
-import exerciseapi as exer
+import helpers.exerciseapi as exer
 from dotenv import load_dotenv
-from setPage import set_up_page
+from helpers.setPage import set_up_page
 import os
 set_up_page()
 load_dotenv()

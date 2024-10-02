@@ -54,5 +54,6 @@ def generate_response(user_query):
         return response
     except:
         return "There was an error generating your response"
-    
-generate_response("I am starting working out and need bodyweight exercises to gain upper chest strength. Any reccomendations?")
+
+if __name__ == '__main__':   
+    generate_response("I am starting working out and need bodyweight exercises to gain upper chest strength. Any reccomendations?")

@@ -24,9 +24,10 @@ def chunk_pdf_text(pdf_path, chunk_size=1000, chunk_overlap=200):
     return chunks
 
 # Usage
-pdf_path = 'exercisebook.pdf'
-chunks = chunk_pdf_text(pdf_path)
+if __name__ == '__main__':
+    pdf_path = 'exercisebook.pdf'
+    chunks = chunk_pdf_text(pdf_path)
 
-# Output the list of chunks
-for i, chunk in enumerate(chunks):
-    print(f"Chunk {i + 1}:\n{chunk}\n")
+    # Output the list of chunks
+    for i, chunk in enumerate(chunks):
+        print(f"Chunk {i + 1}:\n{chunk}\n")
