@@ -1,3 +1,9 @@
+from dotenv import load_dotenv
+import os
+
+# Load environment variables from .env file
+load_dotenv()
+
 import streamlit as st
 import cv2
 import mediapipe as mp
@@ -7,13 +13,8 @@ import openai
 from baml_src.baml_client.sync_client import b
 from baml_src.baml_client.types import Exercises
 from setPage import set_up_page
-from dotenv import load_dotenv
 import os
 set_up_page()
-load_dotenv()
-
-openai_api_key = os.environ.get("OPENAI_API_KEY")
-
 
 
 def get_json(experience_level, body_part, exercise_duration):
