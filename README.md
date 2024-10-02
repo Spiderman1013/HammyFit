@@ -16,9 +16,8 @@ Welcome to HammyFit, the fitness app where you and your virtual hamster buddy em
 
 To get started with HammyFit, follow these steps:
 
-1. Fork the Project
-Fork this repository to your GitHub account by clicking the Fork button in the top-right corner.
-Clone your forked repository locally:
+1. Clone the Project
+Clone this repository to your PC by running the following command:
 ```
 https://github.com/Spiderman1013/HammyFit.git
 ```
