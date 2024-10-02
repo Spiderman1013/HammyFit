@@ -16,8 +16,6 @@ def set_up_page():
             'About': "# This is a header. This is an *extremely* cool app!"
         }
     )
-    st.write(icon_path)
-    st.write(logo_path)
     st.logo(logo_path)
     st.html("""
   <style>
