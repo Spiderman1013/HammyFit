@@ -26,3 +26,6 @@ MANIFEST
 
 # Environment variables
 .env
+
+# for mac
+.DS_Store
