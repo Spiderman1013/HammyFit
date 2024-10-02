@@ -1,4 +1,3 @@
-python==3.12.4
 audio_recorder_streamlit==0.0.10
 baml_py==0.57.1
 httpx_oauth==0.15.1
