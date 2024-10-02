@@ -5,6 +5,7 @@ from process_frame import ProcessFrame
 from thresholds import get_thresholds_beginner, get_thresholds_pro
 import threading
 from playsound import playsound
+import os
 import time
 
 st.title('AI Fitness Trainer: Squats Analysis')
@@ -31,8 +32,10 @@ cap = cv2.VideoCapture(0)  # Use 0 for the default camera
 ready = True
 
 def play_sound(sound_to_play):
+    current_dir = os.path.dirname(os.path.abspath(__file__))
     for sound in sound_to_play:
-        playsound(f'{sound}.mp3')
+        sound_file = os.path.join(current_dir, 'sounds', f'{sound}.mp3')
+        playsound(sound_file)
     time.sleep(3)
     global ready
     ready = True
