@@ -45,8 +45,9 @@ ready = True
 
 def play_sound(sound_to_play):
     for sound in sound_to_play:
-        sound_file = os.path.join('sounds', f'{sound}.mp3')
-        sound_file = os.path.abspath('assets', sound_file)
+        parent_dir = os.path.abspath(os.path.join(os.getcwd(), '..'))
+        sound_file = os.path.join(parent_dir, 'assets', 'sounds', f'{sound}.mp3')
+        st.write(sound_file)
         playsound(sound_file)
     time.sleep(3)
     global ready
