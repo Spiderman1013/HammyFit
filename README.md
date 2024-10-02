@@ -11,7 +11,8 @@ Welcome to HammyFit, the fitness app where you and your virtual hamster buddy em
 - Exercise Form Checker: Use your camera to check your form during exercises and receive real-time feedback.
 - Live chat: Talk directly to Hammy about your questions, who will answer factually using the latest fitness knowledge!
 
-Getting Started
+
+**Getting Started**
 
 To get started with HammyFit, follow these steps:
 
